@@ -1,25 +1,35 @@
 {
-  "Items": [
-    {
+  "Items":[
+   {
+      "id": 1,
+      "name": "IPhone 8S",
+      "description": "Phone Made by Apple",
+      "stock": 20,
+      "price": 230
+   },
+
+   {
       "id": 2,
       "name": "Playstation 4",
       "description": "Gaming console made by Sony",
       "stock": 50,
       "price": 400
-    },
-    {
+   },
+   
+   {
       "id": 3,
       "name": "Instant Pot",
       "description": "7 kinds of cookers into 1",
       "stock": 40,
       "price": 60
-    },
-    {
+   },
+   
+   {
       "id": 4,
       "name": "Nike Athletic Shirt",
       "description": "Shirt made by Nike",
       "stock": 100,
       "price": 25
-    }
-  ]
+   }
+   ]
 }
