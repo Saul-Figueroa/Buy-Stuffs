@@ -18,6 +18,11 @@ public class ItemController {
 	@Autowired
 	ItemService itemService;
 	
+	//Add new item
+	//Get all items
+	//Delete item
+	//Get item by id
+	
 	@GetMapping("/itemdelete")
 	public String delete(Model model) {
 //		List<Item> itemList = itemService.listAllItems();

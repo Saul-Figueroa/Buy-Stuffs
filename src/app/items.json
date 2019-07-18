@@ -20,6 +20,20 @@
       "description": "Shirt made by Nike",
       "stock": 100,
       "price": 25
+    },
+    {
+      "name": "T-shirt",
+      "description": "New t-shirt model 2019",
+      "stock": "10",
+      "price": "30",
+      "id": 5
+    },
+    {
+      "name": "T-shirt",
+      "description": "New t-shirt model 2019",
+      "stock": "10",
+      "price": "30",
+      "id": 6
     }
   ]
 }

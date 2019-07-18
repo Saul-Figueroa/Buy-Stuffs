@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { ItemServiceService } from '../item-service.service';
 import { Item } from './item';
+=======
+import {ItemServiceService} from '../item-service.service';
+import {Item} from './item';
+>>>>>>> 3f2bb87ff4400731150c9cfa99fe422a55182a03
 
 @Component({
   selector: 'app-item',
@@ -9,7 +14,6 @@ import { Item } from './item';
 })
 export class ItemComponent implements OnInit {
 
-  constructor(private _itemService:ItemServiceService) { }
 
   items:Item[];
   statusMessage:string;
@@ -20,12 +24,6 @@ export class ItemComponent implements OnInit {
   }
 
   getItems():void{
-    this._itemService.getItems().
-    subscribe((bookData) => this.items = bookData,
-                             (error) =>{console.log(error);
-                             this.statusMessage = "Problem with service. Please try again later!";
-                            }
-    );
+   
   }
-
 }
