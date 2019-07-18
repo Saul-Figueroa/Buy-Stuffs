@@ -14,24 +14,24 @@ public class Item {
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long id;
+	private int id;
 	
 	@Column(name="name", length=50)
 	private String name;
 	
-	@Column(name="description", length=500)
+	@Column(name="description", length=50)
 	private String description;
 	
 	@Column(name="price")
 	private double price;
 	
 	@Column(name="quantity")
-	private long quantity;
+	private int quantity;
 	
 	public Item() {}
 	
-	public Item(long id, String name, String description, double price, long quantity) {
-		super();
+	public Item(int id, String name, String description, double price, int quantity) {
+		
 		this.id = id;
 		this.name = name;
 		this.description = description;
@@ -39,26 +39,28 @@ public class Item {
 		this.quantity = quantity;
 	}
 
-	public Item(long id, String name, String description, double price) {
-		super();
+	public Item(int id, String name, String description, double price) {
+		
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.price = price;
 	}
 
-	public Item(String name, String description, double price) {
-		super();
+	public Item(String name, String description, double price,int quantity ) {
+		
 		this.name = name;
 		this.description = description;
 		this.price = price;
+		this.quantity = quantity;
+		
 	}
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -86,11 +88,11 @@ public class Item {
 		this.price = price;
 	}
 
-	public long getQuantity() {
+	public int getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(long quantity) {
+	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 
@@ -100,4 +102,5 @@ public class Item {
 				+ quantity + "]";
 	}
 
+	
 }

@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { ItemComponent } from './item/item.component';
 import { ItemListComponent } from './item-list/item-list.component';
 import { HomeComponent } from './home/home.component';
-import { DeleteItemComponent } from './delete-item/delete-item.component';
+import { DeleteItemComponent } from "./delete-item/delete-item.component";
 import { FormsModule } from '@angular/forms';
 import { ItemServiceService } from './item-service.service';
 

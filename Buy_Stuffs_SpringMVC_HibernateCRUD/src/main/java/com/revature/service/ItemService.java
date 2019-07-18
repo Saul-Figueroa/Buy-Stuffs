@@ -6,10 +6,10 @@ import com.revature.entity.Item;
 
 public interface ItemService {
 	
-	public List<Item> listAllItems();
-//	public void createItem(Item item);
-//	public Item getItemById(long itemId);
-//	public void updateItemById(long itemId, double price);
-	public void deleteItemById(long itemId);
+	//Save and update	
+	public void addItem(Item item);	
+	public List<Item> getAllItems();
+	public Item fetchItemById(int itemId);
+	public void deleteItemById(int itemId);
 
 }

@@ -15,41 +15,33 @@ public class ItemServiceImpl implements ItemService {
 
 	@Autowired
 	ItemDAOImpl itemDAO;
-	
+
 	@Override
 	@Transactional
-	public void deleteItemById(long itemId) {
-		new ItemDAOImpl().deleteItemById(itemId);
-	}
-	
-//	@Override
-	@Transactional
-	public List<Item> listAllItems() {
-		List<Item> listItem = itemDAO.getAllItems();
-		System.out.println("list in service: " + listItem);
-		return listItem;
+	public void addItem(Item item) {
+		itemDAO.addItem(item);
 	}
 
-//	@Override
-//	public void createItem(Item item) {
-//		new ItemDAOImpl().addItem(item);
-//
-//	}
-//
-//	@Override
-//	public Item getItemById(long itemId) {
-//		return new ItemDAOImpl().fetchItemById(itemId);
-//	}
-//
-//	@Override
-//	public void updateItemById(long itemId, float price) {
-//		new ItemDAOImpl().updateItemById(itemId, price);
-//
-//	}
-//
-//	@Override
-//	public void deleteItemById(long itemId) {
-//		new ItemDAOImpl().deleteItemById(itemId);
-//	}
+	@Override
+	@Transactional
+	public List<Item> getAllItems() {
+		List<Item> items = itemDAO.getAllItems();		
+		return items;
+	}
+
+	@Override
+	@Transactional
+	public Item fetchItemById(int itemId) {
+		Item item = itemDAO.fetchItemById(itemId);
+		return item;
+	}
+
+	@Override
+	@Transactional
+	public void deleteItemById(int itemId) {
+		itemDAO.deleteItemById(itemId);
+	}
+	
+	
 
 }

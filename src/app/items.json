@@ -34,6 +34,20 @@
       "stock": "10",
       "price": "30",
       "id": 6
+    },
+    {
+      "name": "new test",
+      "description": "new test",
+      "stock": "10",
+      "price": "100",
+      "id": 7
+    },
+    {
+      "name": "Iphone xs",
+      "description": "Latest iphone",
+      "stock": "50",
+      "price": "1000",
+      "id": 8
     }
   ]
 }
