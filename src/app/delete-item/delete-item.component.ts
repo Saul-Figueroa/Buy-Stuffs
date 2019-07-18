@@ -11,15 +11,19 @@ export class DeleteItemComponent implements OnInit {
 
   // 1. Create empty items array
   public items:Item[]=[];
+
+  statusMessage:String;
+  item = new Item();
+
   // 2. Create service object
   constructor(private _itemService:ItemServiceService) { }
 
-  // 3. return book array
-  getbooks():Item[]{
+  // 3. return item array
+  getItems():Item[]{
     return this.items;
   }
 
-  // 4. Call service method and assign the result in books array
+  // 4. Call service method and assign the result in items array
   ngOnInit() {
     this._itemService.getItems();
   }
@@ -27,11 +31,11 @@ export class DeleteItemComponent implements OnInit {
   // Delete method
   deleteItem(id:number){
     this._itemService.deleteItem(id).subscribe((response) => {console.log(response);
-  //There's some kind of problem here----------------------------                                                           // this.getItems();
+                                                             this.getItems();
                                                               },
                                                               (error) => {
                                                                 console.log(error);
-                                                                //this.statusMessage = "Problem with service. Please try again later.";
+                                                                this.statusMessage = "Problem with service. Please try again later.";
                                                               }
                                               );
   }
