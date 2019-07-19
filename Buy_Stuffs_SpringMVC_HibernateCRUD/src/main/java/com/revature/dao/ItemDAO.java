@@ -6,10 +6,13 @@ import com.revature.entity.Item;
 
 public interface ItemDAO {
 	
-//	public List<Item> getAllItems();
-//	public void addItem(Item item);
-//	public Item fetchItemById(long itemId);
-	public void deleteItemById(long itemId);
-//	void updateItemById(long itemId, Double price);
+//Save and update	
+public void addItem(Item item);	
+public List<Item>  getAllItems();
+public Item fetchItemById(int itemId);
+public void deleteItemById(int itemId);
+
+
+
 
 }

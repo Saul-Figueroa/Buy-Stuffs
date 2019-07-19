@@ -10,7 +10,7 @@ export class ItemServiceService {
 
   constructor(private _httpService: HttpClient) {}
   getItems(): Observable<any>{ //asynchronous
-    return this._httpService.get("http://localhost:3000/Items/");
+    return this._httpService.get("http://localhost:3000/items/");
   }
    //2. add a new item
 

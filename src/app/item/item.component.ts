@@ -14,11 +14,32 @@ export class ItemComponent implements OnInit {
   statusMessage:string;
   item = new Item();
 
+  constructor(private _itemService:ItemServiceService){}
+
+
   ngOnInit() {
     this.getItems();
   }
 
-  getItems():void{
-   
+  //Add an item
+  addItem(): void{
+
+    this._itemService.addItem(this.item).subscribe((response) => {console.log(response);
+
+    }
+
+    );
+
   }
+
+  getItems():void{
+    this._itemService.getItems().
+    subscribe((itemData) => this.items = itemData,
+                             (error) =>{console.log(error);
+                             this.statusMessage = "Problem with service. Please try again later!";
+                            }
+    );
+  }
+
+
 }
