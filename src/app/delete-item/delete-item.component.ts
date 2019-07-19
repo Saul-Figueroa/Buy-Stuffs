@@ -10,23 +10,31 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./delete-item.component.css']
 })
 export class DeleteItemComponent implements OnInit {
-  constructor(private _httpService: HttpClient) {}
+  constructor(private _itemService:ItemServiceService) {}
 
-  getItems(): Observable<any>{ //asynchronous
-    // return this._httpService.get("http://localhost:3000/items");
-    return this._httpService.get("http://localhost:8090/Rev_SpringMVC_Hello/api/items");
+  // 1. Get all items
+  getItems():void{
+    this._itemService.getItems().
+    subscribe((itemData) => this.items = itemData,
+                             (error) =>{console.log(error);
+                             this.statusMessage = "Problem with service. Please try again later!";
+                            }
+    );
   }
 
-  // 3. Get a item
-  getItemById(itemId: number): Observable<any>{
-    return this._httpService.get("http://localhost:8090/Rev_SpringMVC_Hello/api/items" + itemId)
-  }
 
    //4. Delete a Item
-   deleteItem(itemId: number){
-    return this._httpService.delete("http://localhost:8090/Rev_SpringMVC_Hello/api/items" + itemId);
+   deleteItem(itemId):void{
+    this._itemService.deleteItem(itemId).
+    subscribe((response) => {console.log(response);
+                            this.getItems();
+                            },
+                            (error) => {
+                              console.log(error);
+                              this.statusMessage = "Problem with service. Please try again later.";
+                            }
+            );
   }
-
   // 1. Create empty items array
   public items:Item[]=[];
 
