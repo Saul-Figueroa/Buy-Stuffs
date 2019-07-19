@@ -12,16 +12,16 @@ export class ItemServiceService {
   getItems(): Observable<any>{ //asynchronous
     return this._httpService.get("http://localhost:3000/Items/");
   }
-   //2. add a new book
+   //2. add a new item
 
    addItem(item: Item)
    {
      let body = JSON.parse(JSON.stringify(item));
  
-     return this._httpService.post("http://localhost:3000/items/", body);
+     return this._httpService.post("http://localhost:3000/Items/", body);
    }
 
-  //4. Delete a Book
+  //4. Delete a Item
   deleteItem(itemId: number){
     return this._httpService.delete("http://localhost:3000/Items/" + itemId);
   }
