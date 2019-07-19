@@ -3,7 +3,6 @@ package com.revature.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.revature.entity.Item;
 import com.revature.service.ItemService;
 
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api")
 public class ItemController {
@@ -27,15 +26,24 @@ public class ItemController {
 	@PostMapping("/items")
 	public Item addItem(@RequestBody Item item) {
 		
-		
-		return null;
+		itemService.addItem(item);
+		return item;
 		
 	}
 	//Get all items
 	@GetMapping("/items")
 	public List<Item> getAllItems() {
 		
-		return null;
+		System.out.println("Entered list items");
+		List<Item> items= itemService.getAllItems();
+		
+		System.out.println("List: "+items);
+		
+		if (items == null) {
+			return null;
+		}
+		
+		return items;
 	}
 	
 	//Get item by id
