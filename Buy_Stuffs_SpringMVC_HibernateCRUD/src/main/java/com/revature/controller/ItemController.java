@@ -48,25 +48,31 @@ public class ItemController {
 	
 	//Get item by id
 	@GetMapping("/items/{id}")
-	public Item findItem(@PathVariable int id)
+	public Item findItemById(@PathVariable int id)
 	{
+		Item item = itemService.fetchItemById(id);
+		System.out.println("Item "+item);
 		
-		return null;
+		return item;
 		
 	}
 	//Delete item
 	@RequestMapping(value = "/items/{id}", method = RequestMethod.DELETE)
 	public String deleteItem(@PathVariable ("id") int id) {
 		
+		itemService.deleteItemById(id);
+		System.out.println("Item deleted id "+id);
 		
-		return null;
+		return "Item deleted successfully";
 		
 	}
 	
 	@RequestMapping(value = "/items", method = RequestMethod.PUT)
 	public String updateItem(@RequestBody Item item) {
 		
-		return null;
+		//Is the same logic as add item (save or update)
+		itemService.addItem(item);
+		return "Item updated successfully";
 		
 	}
 	
