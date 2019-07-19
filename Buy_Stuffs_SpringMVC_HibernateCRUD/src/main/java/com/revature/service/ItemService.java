@@ -10,6 +10,6 @@ public interface ItemService {
 	public void addItem(Item item);	
 	public List<Item>  getAllItems();
 	public Item fetchItemById(int itemId);
-	public Item deleteItemById(int itemId);
+	public void deleteItemById(int itemId);
 
 }

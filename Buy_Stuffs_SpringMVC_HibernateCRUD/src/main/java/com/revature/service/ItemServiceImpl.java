@@ -17,27 +17,29 @@ public class ItemServiceImpl implements ItemService {
 	ItemDAOImpl itemDAO;
 
 	@Override
+	@Transactional
 	public void addItem(Item item) {
-		// TODO Auto-generated method stub
-		
+		itemDAO.addItem(item);
 	}
 
 	@Override
+	@Transactional
 	public List<Item> getAllItems() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Item> items = itemDAO.getAllItems();		
+		return items;
 	}
 
 	@Override
+	@Transactional
 	public Item fetchItemById(int itemId) {
-		// TODO Auto-generated method stub
-		return null;
+		Item item = itemDAO.fetchItemById(itemId);
+		return item;
 	}
 
 	@Override
-	public Item deleteItemById(int itemId) {
-		// TODO Auto-generated method stub
-		return null;
+	@Transactional
+	public void deleteItemById(int itemId) {
+		itemDAO.deleteItemById(itemId);
 	}
 	
 	
