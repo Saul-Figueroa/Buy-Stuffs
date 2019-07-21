@@ -110,49 +110,6 @@ public class Transaction {
 	}
 
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		long temp;
-		temp = Double.doubleToLongBits(amount);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + id;
-		result = prime * result + ((itemid == null) ? 0 : itemid.hashCode());
-		result = prime * result + quantity;
-		return result;
-	}
-
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Transaction other = (Transaction) obj;
-		if (Double.doubleToLongBits(amount) != Double.doubleToLongBits(other.amount))
-			return false;
-		if (description == null) {
-			if (other.description != null)
-				return false;
-		} else if (!description.equals(other.description))
-			return false;
-		if (id != other.id)
-			return false;
-		if (itemid == null) {
-			if (other.itemid != null)
-				return false;
-		} else if (!itemid.equals(other.itemid))
-			return false;
-		if (quantity != other.quantity)
-			return false;
-		return true;
-	}
-
 
 	@Override
 	public String toString() {
