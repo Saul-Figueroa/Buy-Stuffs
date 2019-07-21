@@ -26,10 +26,9 @@ export class ItemComponent implements OnInit {
 
     this._itemService.addItem(this.item).subscribe((response) => {console.log(response);
 
-    }
+    } );
 
-    );
-
+    this.reset();
   }
 
   getItems():void{
@@ -39,6 +38,15 @@ export class ItemComponent implements OnInit {
                              this.statusMessage = "Problem with service. Please try again later!";
                             }
     );
+  }
+
+
+  private reset(){
+    
+    this.item.name = null;
+    this.item.description = null;
+    this.item.price = null;
+    this.item.quantity = null;
   }
 
 
