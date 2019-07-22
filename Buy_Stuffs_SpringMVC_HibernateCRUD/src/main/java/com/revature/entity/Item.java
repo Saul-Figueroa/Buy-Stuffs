@@ -32,7 +32,7 @@ public class Item {
 	@Column(name="quantity")
 	private int quantity;
 	
-	//Many to One FK for Vendor(the person who register the product), One vendor can have many items
+	//Many to One FK for Vendor(the person who register the product), many items can have the same vendor
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "clientid")
 	private Client clientid;

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.entity.Client;
 import com.revature.entity.Item;
 import com.revature.service.ItemService;
 
@@ -26,7 +27,7 @@ public class ItemController {
 	//Add new item
 	@PostMapping("/items")
 	public Item addItem(@RequestBody Item item) {
-		
+		item.setClientid(new Client(4));
 		itemService.addItem(item);
 		return item;
 		

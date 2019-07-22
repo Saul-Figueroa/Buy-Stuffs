@@ -28,7 +28,8 @@ export class ItemComponent implements OnInit {
 
     } );
 
-    this.reset();
+    
+    this.refresh();
   }
 
   getItems():void{
@@ -39,6 +40,10 @@ export class ItemComponent implements OnInit {
                             }
     );
   }
+
+  refresh(): void {
+    window.location.reload();
+}
 
 
   private reset(){

@@ -28,7 +28,7 @@ public class ItemDAOImpl implements ItemDAO {
 		List<Item> itemList = new ArrayList<>();
 
 		
-		Query query = sessionFactory.getCurrentSession().createQuery("from Item");
+		Query query = sessionFactory.getCurrentSession().createQuery("from Item order by id");
 		query.setMaxResults(100);
 		itemList = (ArrayList<Item>) query.list();
 		System.out.println("List in DAO "+itemList);

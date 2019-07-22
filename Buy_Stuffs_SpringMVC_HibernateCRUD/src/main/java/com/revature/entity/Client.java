@@ -26,7 +26,7 @@ public class Client {
 	private String password;
 	
 //	columnDefinition forces the role to be either MANAGER or CUSTOMER
-	@Column(name="role", columnDefinition = "VARCHAR2(50) CHECK (role IN ('MANAGER', 'CUSTOMER'))")
+	@Column(name="role", columnDefinition = "VARCHAR2(50) CHECK (role IN ('MANAGER', 'CUSTOMER', 'VENDOR'))")
 	private String role;
 	
 	public Client() {}
@@ -38,6 +38,10 @@ public class Client {
 		this.email = email;
 		this.password = password;
 		this.role = role;
+	}
+	
+	public Client(long id) {
+		this.id = id;
 	}
 
 	public long getId() {

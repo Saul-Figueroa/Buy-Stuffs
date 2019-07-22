@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -26,11 +28,14 @@ public class Transaction {
 	@Column(name = "quantity")
 	private int quantity;
 	
+	@Column(name = "price")
+	private int price;
+	
 	@Column(name = "amount")
 	private double amount;
 	
-	//OneToOne FK for item
-	@OneToOne(cascade = CascadeType.ALL)
+	// FK for item/transaction (many transactions can have the same item)
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "itemid")
 	private Item itemid;
 
@@ -110,11 +115,20 @@ public class Transaction {
 	}
 
 
+	public int getPrice() {
+		return price;
+	}
+
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
 
 	@Override
 	public String toString() {
-		return "Transaction [id=" + id + ", description=" + description + ", quantity=" + quantity + ", amount="
-				+ amount + ", itemid=" + itemid + "]";
+		return "Transaction [id=" + id + ", description=" + description + ", quantity=" + quantity + ", price=" + price
+				+ ", amount=" + amount + ", itemid=" + itemid + "]";
 	}
 
 
