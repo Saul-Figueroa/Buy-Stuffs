@@ -14,7 +14,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name ="USERS" )
-public class Users {
+public class User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,15 +50,15 @@ public class Users {
 	private String resetToken;
 	
 	
-	public Users() { }
+	public User() { }
 	
 	
-	public Users(String email, String password) {
+	public User(String email, String password) {
 		this.email = email;
 		this.password = password;
 	}
 	
-	public Users(String email, String password, String firstName, String lastName, boolean enabled,
+	public User(String email, String password, String firstName, String lastName, boolean enabled,
 			Date createdOn, Date lastLogin, String resetToken) {
 		this.email = email;
 		this.password = password;
@@ -70,7 +70,7 @@ public class Users {
 		this.resetToken = resetToken;
 	}
 
-	public Users(long id, String email, String password, String firstName, String lastName, boolean enabled,
+	public User(long id, String email, String password, String firstName, String lastName, boolean enabled,
 			Date createdOn, Date lastLogin, String resetToken) {
 		this.id = id;
 		this.email = email;
