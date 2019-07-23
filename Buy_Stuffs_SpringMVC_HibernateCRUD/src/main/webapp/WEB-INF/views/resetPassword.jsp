@@ -8,11 +8,11 @@
 </head>
 <body>
 
-<h3>Welcome to forgot password, please introduce your email address, we'll send a mail to recover your password</h3>
- <form method="post" action="forgot">
-            Email <input type="email" name="email"/> <Br>
+<h3>Welcome to reset password, please introduce your new password</h3>
+ <form method="post" action="reset">
+            Password <input type="password" name="password"/> <Br>
             <!-- Make sure to use input type "Submit" instead of input type "Button" -->
-            <input type="Submit" value="Submit">We can get rid of this text.</input>
+            <input type="Submit" value="Submit" />
     </form>
 
 </body>

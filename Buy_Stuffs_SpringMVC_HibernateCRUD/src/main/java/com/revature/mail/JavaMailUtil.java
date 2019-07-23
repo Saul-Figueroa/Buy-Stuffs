@@ -58,7 +58,7 @@ public static boolean sendMail(User user, String url) throws MessagingException 
 			message.setFrom(new InternetAddress(myAccountEmail));
 			message.setRecipient(Message.RecipientType.TO, new InternetAddress(user.getEmail()));
 			message.setSubject("Password Reset Request");
-			message.setText("To reset your password, click the link below:\n");
+			message.setText("To reset your password, click the link below:\n"+url);
 			//to set up html instead we use setContent
 //			String html = "<h1>This is an example using html </h1><br> <h2><b>Welcome to the Java mail API</b></h2>";
 //			message.setContent(html, "text/html");

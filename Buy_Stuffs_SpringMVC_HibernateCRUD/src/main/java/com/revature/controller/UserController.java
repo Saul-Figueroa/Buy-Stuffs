@@ -32,6 +32,7 @@ public class UserController {
 		public ModelAndView displayLoginPage() {
 			return new  ModelAndView("login");
 		}
+		
 	
 	//Display forgot password page
 	@RequestMapping(value = "/forgot", method = RequestMethod.GET)
@@ -44,11 +45,12 @@ public class UserController {
 	public ModelAndView processForgotPasswordForm(ModelAndView modelAndView, @RequestParam("email") String userEmail, HttpServletRequest request ) throws MessagingException {
 		
 		//Lookup user in the database by email
-		
-		User user = userService.findUserByEmail(userEmail);
+		System.out.println(userEmail);
+		User user = userService.findUserByEmail(userEmail.toUpperCase());
+		System.out.println("User information "+user);
 		
 		if (user == null) {
-			modelAndView.addObject("errorMessage", "We didn't find an account for that email addredd" );
+			modelAndView.addObject("errorMessage", "We didn't find an account for that email address" );
 		}
 		else {
 		// Generate random 36-character string token for reset password
@@ -60,7 +62,7 @@ public class UserController {
 		
 		System.out.println("User values "+user);
 		
-		String appUrl = request.getScheme() + "://" + request.getServerName()+ "/reset?token="+user.getResetToken();
+		String appUrl = request.getScheme() + "://" + request.getServerName()+ ":8090/Buy_Stuffs/user/reset?token="+user.getResetToken();
 		System.out.println("This is the URL "+appUrl);
 		
 		
@@ -79,35 +81,46 @@ public class UserController {
 	
 	//Display form to reset password
 	@RequestMapping(value = "/reset", method = RequestMethod.GET)
-	public ModelAndView displayResetPasswordPage(ModelAndView modelAndView, @RequestParam("token") String token) {
+	public ModelAndView displayResetPasswordPage(ModelAndView modelAndView, @RequestParam("token") String token, HttpServletRequest request ) {
 		
-		User user = userService.findUserByResetToken(token);
+		User userToken = userService.findUserByResetToken(token);
+		System.out.println("Token information "+userToken);
+		
+		 request.getSession().setAttribute("userToken", userToken);
+		 System.out.println("Requestinformation "+request.getSession().getAttribute("userToken"));
+		
 
-		if (!(user == null)) { // Token found in DB
+		if (!(userToken == null)) { // Token found in DB
 			modelAndView.addObject("resetToken", token);
+			
+			
 		} else { // Token not found in DB
 			modelAndView.addObject("errorMessage", "Oops!  This is an invalid password reset link.");
 		}
-
+		
 		modelAndView.setViewName("resetPassword");
 		return modelAndView;
 	}
 	
 	
-	// Process reset password form
+	// Process reset password form	
 		@RequestMapping(value = "/reset", method = RequestMethod.POST)
-		public ModelAndView setNewPassword(ModelAndView modelAndView, @RequestParam Map<String, String> requestParams, RedirectAttributes redir) {
-
+		public ModelAndView setNewPassword(ModelAndView modelAndView, @RequestParam String password, RedirectAttributes redir, HttpServletRequest request) {
+			User tokenUser = (User) request.getSession().getAttribute("userToken");
+			System.out.println("Request parameter "+tokenUser);
+			System.out.println("Reset parameter "+tokenUser.getResetToken());
+			
 			// Find the user associated with the reset token
-			User user = userService.findUserByResetToken(requestParams.get("token"));
+			User user = userService.findUserByResetToken(tokenUser.getResetToken());
+			System.out.println("User information "+user);
 
 			// This should always be non-null but we check just in case
 			if (!(user == null)) {
 				
-	 
+				System.out.println("Changing the password");
 				// Set new password    
-	            user.setPassword(requestParams.get("password"));
-	            
+	            user.setPassword(password);
+	          
 				// Set the reset token to null so it cannot be used again
 				user.setResetToken(null);
 

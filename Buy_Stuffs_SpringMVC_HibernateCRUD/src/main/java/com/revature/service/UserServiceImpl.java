@@ -33,5 +33,13 @@ public class UserServiceImpl implements UserService{
 		userDaoImpl.save(user);
 		
 	}
+	
+//	public static void main(String[] args) {
+//		//call find by email
+//		System.out.println("Entering here");
+//		
+//		
+//		System.out.println(findUserByEmail("SAULEFF@GMAIL.COM"));
+//	}
 
 }
