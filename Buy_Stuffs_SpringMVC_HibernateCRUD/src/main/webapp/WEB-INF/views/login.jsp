@@ -5,9 +5,10 @@
         <H1>LP</H1>
         <!-- method="post" is for making sure we don't pass the parameters in the URL -->
         <!-- In web.XML, we need to make sure to specify /login URI where this info is going -->
-        <form method="get" action="logon">
-            username <input type="text" name="uname"/> <Br>
-            password <input type="text" name="pass"/>
+        <form method="get" action="login">
+            username <input type="text" name="username"/> <Br>
+            password <input type="text" name="password"/> <Br>
+            <a href="forgot">Forgot password?</a> <Br>
             <!-- Make sure to use input type "Submit" instead of input type "Button" -->
             <input type="Submit" value="Submit">We can get rid of this text.</input>
     </form>
