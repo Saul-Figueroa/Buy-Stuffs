@@ -11,27 +11,27 @@ import com.revature.entity.User;
 @Service
 public class UserServiceImpl implements UserService{
 	
-//	@Autowired
-//	
-//	private UserDAOImpl userDaoImpl;
-//
-//	@Override
-//	@Transactional
-//	public User findUserByEmail(String email) {
-//		return userDaoImpl.findUserByEmail(email);
-//	}
-//
-//	@Override
-//	@Transactional
-//	public User findUserByResetToken(String resetToken) {
-//		return userDaoImpl.findUserByResetToken(resetToken);
-//	}
-//
-//	@Override
-//	@Transactional
-//	public void save(User user) {
-//		userDaoImpl.save(user);
-//		
-//	}
+	@Autowired
+	
+	private UserDAOImpl userDaoImpl;
+
+	@Override
+	@Transactional
+	public User findUserByEmail(String email) {
+		return userDaoImpl.findUserByEmail(email);
+	}
+
+	@Override
+	@Transactional
+	public User findUserByResetToken(String resetToken) {
+		return userDaoImpl.findUserByResetToken(resetToken);
+	}
+
+	@Override
+	@Transactional
+	public void save(User user) {
+		userDaoImpl.save(user);
+		
+	}
 
 }

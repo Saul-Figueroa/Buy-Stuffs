@@ -30,9 +30,6 @@ public class User {
 	@Column(name = "lastname")
 	private String lastName;
 	
-	@Column(name = "enabled")
-	private boolean enabled;
-	
 	@Column(name = "createdon")
 	private Date createdOn;
 	
@@ -56,13 +53,12 @@ public class User {
 		this.password = password;
 	}
 	
-	public User(String email, String password, String firstName, String lastName, boolean enabled,
+	public User(String email, String password, String firstName, String lastName,
 			Date createdOn, Date lastLogin, String resetToken, String role) {
 		this.email = email;
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.enabled = enabled;
 		this.createdOn = createdOn;
 		this.lastLogin = lastLogin;
 		this.resetToken = resetToken;
@@ -70,14 +66,13 @@ public class User {
 		
 	}
 
-	public User(long id, String email, String password, String firstName, String lastName, boolean enabled,
+	public User(long id, String email, String password, String firstName, String lastName,
 			Date createdOn, Date lastLogin, String resetToken, String role) {
 		this.id = id;
 		this.email = email;
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.enabled = enabled;
 		this.createdOn = createdOn;
 		this.lastLogin = lastLogin;
 		this.resetToken = resetToken;
@@ -136,16 +131,6 @@ public class User {
 	}
 
 
-	public boolean isEnabled() {
-		return enabled;
-	}
-
-
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
-	}
-
-
 	public Date getCreatedOn() {
 		return createdOn;
 	}
@@ -191,9 +176,10 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", email=" + email + ", password=" + password + ", firstName=" + firstName
-				+ ", lastName=" + lastName + ", enabled=" + enabled + ", createdOn=" + createdOn + ", lastLogin="
-				+ lastLogin + ", resetToken=" + resetToken + ", role=" + role + "]";
+				+ ", lastName=" + lastName + ", createdOn=" + createdOn + ", lastLogin=" + lastLogin + ", resetToken="
+				+ resetToken + ", role=" + role + "]";
 	}
+
 
 
 	
