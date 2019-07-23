@@ -22,7 +22,7 @@ import com.revature.service.UserService;
 
 @Controller
 @RequestMapping("/user")
-public class UserController {
+public class MailController {
 	
 	@Autowired
 	private UserService userService;
