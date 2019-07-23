@@ -9,57 +9,55 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
-
 @Entity
 @Table(name ="USERS" )
-public class Users {
+public class User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", nullable = false, updatable = false)
+	@Column(name = "id")
 	private long id;
 	
-	@Column(name = "email", nullable = false, unique = true )
-	@Email(message = "Please enter a valid e-mail")
-	@NotEmpty(message = "Please enter an e-mail")
+	@Column(name = "email")
 	private String email;
 	
-	@Column(name = "password", nullable = false)
+	@Column(name = "password")
 	private String password;
 	
-	@Column(name = "first_name")
-	@NotEmpty(message = "Please enter your first name ")
+	@Column(name = "firstname")
 	private String firstName;
 
-	@Column(name = "last_name")
-	@NotEmpty(message = "Please enter your last name")
+	@Column(name = "lastname")
 	private String lastName;
 	
 	@Column(name = "enabled")
 	private boolean enabled;
 	
-	@Column(name = "created-on")
+	@Column(name = "createdon")
 	private Date createdOn;
 	
-	@Column(name = "last_login")
+	@Column(name = "lastlogin")
 	private Date lastLogin;
 	
-	@Column(name = "reset_token")
+	@Column(name = "resettoken")
 	private String resetToken;
 	
+//	columnDefinition forces the role to be either MANAGER or CUSTOMER
+	@Column(name="role", columnDefinition = "VARCHAR2(50) CHECK (role IN ('MANAGER', 'CUSTOMER', 'VENDOR'))")
+	private String role;
 	
-	public Users() { }
 	
 	
-	public Users(String email, String password) {
+	public User() { }
+	
+	
+	public User(String email, String password) {
 		this.email = email;
 		this.password = password;
 	}
 	
-	public Users(String email, String password, String firstName, String lastName, boolean enabled,
-			Date createdOn, Date lastLogin, String resetToken) {
+	public User(String email, String password, String firstName, String lastName, boolean enabled,
+			Date createdOn, Date lastLogin, String resetToken, String role) {
 		this.email = email;
 		this.password = password;
 		this.firstName = firstName;
@@ -68,10 +66,12 @@ public class Users {
 		this.createdOn = createdOn;
 		this.lastLogin = lastLogin;
 		this.resetToken = resetToken;
+		this.role=role;
+		
 	}
 
-	public Users(long id, String email, String password, String firstName, String lastName, boolean enabled,
-			Date createdOn, Date lastLogin, String resetToken) {
+	public User(long id, String email, String password, String firstName, String lastName, boolean enabled,
+			Date createdOn, Date lastLogin, String resetToken, String role) {
 		this.id = id;
 		this.email = email;
 		this.password = password;
@@ -81,6 +81,7 @@ public class Users {
 		this.createdOn = createdOn;
 		this.lastLogin = lastLogin;
 		this.resetToken = resetToken;
+		this.role=role;
 	}
 
 
@@ -173,14 +174,29 @@ public class Users {
 	public void setResetToken(String resetToken) {
 		this.resetToken = resetToken;
 	}
+	
+	
+
+
+	public String getRole() {
+		return role;
+	}
+
+
+	public void setRole(String role) {
+		this.role = role;
+	}
 
 
 	@Override
 	public String toString() {
-		return "Users [id=" + id + ", email=" + email + ", password=" + password + ", firstName=" + firstName
+		return "User [id=" + id + ", email=" + email + ", password=" + password + ", firstName=" + firstName
 				+ ", lastName=" + lastName + ", enabled=" + enabled + ", createdOn=" + createdOn + ", lastLogin="
-				+ lastLogin + ", resetToken=" + resetToken + "]";
+				+ lastLogin + ", resetToken=" + resetToken + ", role=" + role + "]";
 	}
+
+
+	
 	
 
 }

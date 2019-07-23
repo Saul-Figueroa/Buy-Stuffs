@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Index Page</h1>
-	<a href="LoginController/login">Login</a>
-	<a href="BookController/booklist">Book List</a>
+	<a href=user/login>Login</a>
+	
 </body>
 </html>
