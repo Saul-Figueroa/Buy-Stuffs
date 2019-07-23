@@ -11,5 +11,6 @@ public interface ClientService {
 	public List<Client> getAllClients();
 	public Client fetchClientById(int clientId);
 //	public void deleteClientById(int clientId);
-
+	public String viewHome(Client client);
+	public Client login(String email, String password);
 }

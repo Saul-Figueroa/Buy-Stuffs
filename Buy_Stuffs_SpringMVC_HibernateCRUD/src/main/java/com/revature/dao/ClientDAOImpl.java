@@ -26,6 +26,7 @@ public class ClientDAOImpl implements ClientDAO {
 
 	@Override
 	public List<Client> getAllClients() {
+		System.out.println("Entering get all clients");
 		List<Client> clientList = new ArrayList<>();
 
 		
