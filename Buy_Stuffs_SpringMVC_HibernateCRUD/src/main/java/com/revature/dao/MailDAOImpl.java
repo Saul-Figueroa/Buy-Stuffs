@@ -17,7 +17,7 @@ public class MailDAOImpl implements MailDAO{
 	@Override
 	public Client findUserByEmail(String email) {
 		System.out.println("Starting find by mail");
-		Query query = sessionFactory.getCurrentSession().createQuery("from User where email= :email");
+		Query query = sessionFactory.getCurrentSession().createQuery("from Client where email= :email");
 		query.setParameter("email", email);
 		System.out.println("Entring here DAO");
 		Client client = (Client) query.getSingleResult();
@@ -28,7 +28,7 @@ public class MailDAOImpl implements MailDAO{
 	public Client findUserByResetToken(String resetToken) {
 		
 		System.out.println("Starting find by mail");
-		Query query = sessionFactory.getCurrentSession().createQuery("from User where resetToken= :resetToken");
+		Query query = sessionFactory.getCurrentSession().createQuery("from Client where resetToken= :resetToken");
 		query.setParameter("resetToken", resetToken);
 		System.out.println("Entring here DAO");
 		Client client = (Client) query.getSingleResult();

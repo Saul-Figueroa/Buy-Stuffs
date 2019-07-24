@@ -119,7 +119,7 @@ public class MailController {
 				System.out.println("Changing the password");
 				// Set new password    
 	            client.setPassword(password);
-	          
+	            
 				// Set the reset token to null so it cannot be used again
 				client.setResetToken(null);
 
