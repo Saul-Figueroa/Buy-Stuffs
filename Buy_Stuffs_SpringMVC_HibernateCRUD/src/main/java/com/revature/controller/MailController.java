@@ -71,7 +71,7 @@ public class MailController {
 				}
 		
 		}
-		
+			
 		
 		modelAndView.setViewName("forgotPassword");
 		return modelAndView;
@@ -100,6 +100,7 @@ public class MailController {
 		modelAndView.setViewName("resetPassword");
 		return modelAndView;
 	}
+	
 	
 	
 	// Process reset password form	

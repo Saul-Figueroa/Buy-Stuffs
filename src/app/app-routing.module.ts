@@ -5,6 +5,8 @@ import { ItemComponent } from './item/item.component';
 import { DeleteItemComponent } from './delete-item/delete-item.component';
 import { ItemListComponent } from './item-list/item-list.component';
 import { ClientComponent } from './client/client.component';
+import { LoginComponent } from './login/login.component';
+
 
 
 const routes: Routes = [
@@ -12,7 +14,9 @@ const routes: Routes = [
   {path: 'deleteItem', component: DeleteItemComponent},
   {path: 'addItem', component: ItemComponent},
   {path: 'showList', component: ItemListComponent},
-  {path: 'showClientList', component: ClientComponent}
+  {path: 'showClientList', component: ClientComponent},
+  {path: 'login', component: LoginComponent}
+  
 ];
 
 @NgModule({

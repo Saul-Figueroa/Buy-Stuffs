@@ -11,6 +11,8 @@ import { DeleteItemComponent } from "./delete-item/delete-item.component";
 import { FormsModule } from '@angular/forms';
 import { ItemServiceService } from './item-service.service';
 import { ClientComponent } from './client/client.component';
+import { LoginComponent } from './login/login.component';
+
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import { ClientComponent } from './client/client.component';
     ItemListComponent,
     HomeComponent,
     DeleteItemComponent,
-    ClientComponent
+    ClientComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
