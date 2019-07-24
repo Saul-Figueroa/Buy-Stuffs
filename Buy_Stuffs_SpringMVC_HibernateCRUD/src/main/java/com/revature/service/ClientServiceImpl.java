@@ -1,7 +1,10 @@
 package com.revature.service;
 
+import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,13 +40,16 @@ public class ClientServiceImpl implements ClientService {
 	}
 
 	@Override
-	public String viewHome(Client client) {
+	public void viewHome(Client client, HttpServletRequest request, HttpServletResponse response) throws IOException {
 		if (client.getRole().equals("MANAGER")) {
-			return "managerHome";
+			response.sendRedirect("http://localhost:4200/homeManager");
+//			return "managerHome";
 		} else if (client.getRole().equals("VENDOR")) {
-			return "vendorHome";
+			response.sendRedirect("http://localhost:4200/homeVendor");
+//			return "vendorHome";
 		}
-		return "customerHome";
+		response.sendRedirect("http://localhost:4200/homeCustomer");
+//		return "customerHome";
 	}
 
 	@Override

@@ -42,33 +42,35 @@ public class LoginController {
 		return new Client();
 	}
 	
-	@GetMapping("/home")
-	public String home(Model model, @ModelAttribute("loggedClient") Client client) {
+	@GetMapping("/viewHome")
+	public String home(Model model, @ModelAttribute("loggedClient") Client client, HttpServletRequest request, HttpServletResponse response) throws IOException {
 		if (client.getFirstName() != null) {
-			return clientService.viewHome(client);
+			clientService.viewHome(client, request, response);
 		}
 //		request.getRequestDispatcher("login").forward(request, response);
 		return "login";
 	}
 	
 	@GetMapping("/login")
-	public String login(Model model, @ModelAttribute("loggedClient") Client client) {
+	public String login(Model model, @ModelAttribute("loggedClient") Client client, HttpServletRequest request, HttpServletResponse response) throws IOException {
 		if (client.getFirstName() != null) {
-			return clientService.viewHome(client);
+			clientService.viewHome(client, request, response);
 		}
 		return "login";
 	}
 	
 	@RequestMapping(value="logon", method=RequestMethod.POST)
-	public ModelAndView logon(@RequestParam("email") String email, @RequestParam("password") String password,
-			Model model, @ModelAttribute("loggedClient") Client client) {
+	public String logon(@RequestParam("email") String email, @RequestParam("password") String password,
+			Model model, @ModelAttribute("loggedClient") Client client, HttpServletRequest request, HttpServletResponse response) throws IOException {
 		client = clientService.login(email, password);
 		if (client != null) {
 			model.addAttribute("loggedClient", client);
 		} else {
-			return new ModelAndView("login", "result", "Unsuccessful login");
+//			return new ModelAndView("login", "result", "Unsuccessful login");
+			return "login";
 		}
-		return new ModelAndView(this.home(model, client), "loggedClient", client);
+//		return new ModelAndView(this.home(model, client), "loggedClient", client);
+		return this.home(model, client, request, response);
 //		"success", "result", "Welcome " + username + "!"
 	}
 	

@@ -26,10 +26,10 @@ export class ClientServiceService {
     return this._httpService.get("http://localhost:8090/Buy_Stuffs/client/clients/" + clientId)
   }
 
-  //4. Delete a Client
-  deleteClient(clientId: number){
-    return this._httpService.delete("http://localhost:8090/Buy_Stuffs/client/clients/" + clientId);
-  }
+  // //4. Delete a Client
+  // deleteClient(clientId: number){
+  //   return this._httpService.delete("http://localhost:8090/Buy_Stuffs/client/clients/" + clientId);
+  // }
 
   viewHome() { //asynchronous
     return this._httpService.get("http://localhost:8090/Buy_Stuffs/LoginController/home");

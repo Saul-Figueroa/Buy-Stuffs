@@ -11,6 +11,8 @@ import { DeleteItemComponent } from "./delete-item/delete-item.component";
 import { FormsModule } from '@angular/forms';
 import { ItemServiceService } from './item-service.service';
 import { ClientComponent } from './client/client.component';
+import { HomeManagerComponent } from './home-manager/home-manager.component';
+import { HomeVendorComponent } from './home-vendor/home-vendor.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { ClientComponent } from './client/client.component';
     ItemListComponent,
     HomeComponent,
     DeleteItemComponent,
-    ClientComponent
+    ClientComponent,
+    HomeManagerComponent,
+    HomeVendorComponent
   ],
   imports: [
     BrowserModule,

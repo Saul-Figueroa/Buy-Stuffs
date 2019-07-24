@@ -30,17 +30,17 @@ export class ClientComponent implements OnInit {
     );
   }
 
-  deleteClient(clientId):void{
-    this._clientService.deleteClient(clientId).
-    subscribe((response) => {console.log(response);
-                            this.getClients();
-                            },
-                            (error) => {
-                              console.log(error);
-                              this.statusMessage = "Problem with service. Please try again later.";
-                            }
-            );
-  }
+  // deleteClient(clientId):void{
+  //   this._clientService.deleteClient(clientId).
+  //   subscribe((response) => {console.log(response);
+  //                           this.getClients();
+  //                           },
+  //                           (error) => {
+  //                             console.log(error);
+  //                             this.statusMessage = "Problem with service. Please try again later.";
+  //                           }
+  //           );
+  // }
 
   addClient(): void{
 
