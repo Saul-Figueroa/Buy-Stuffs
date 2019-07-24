@@ -13,6 +13,8 @@ import { ItemServiceService } from './item-service.service';
 import { ClientComponent } from './client/client.component';
 import { HomeManagerComponent } from './home-manager/home-manager.component';
 import { HomeVendorComponent } from './home-vendor/home-vendor.component';
+import { LoginComponent } from './login/login.component';
+
 
 
 @NgModule({
@@ -24,7 +26,8 @@ import { HomeVendorComponent } from './home-vendor/home-vendor.component';
     DeleteItemComponent,
     ClientComponent,
     HomeManagerComponent,
-    HomeVendorComponent
+    HomeVendorComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
