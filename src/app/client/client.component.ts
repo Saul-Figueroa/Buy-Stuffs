@@ -53,7 +53,8 @@ export class ClientComponent implements OnInit {
 
   private reset(){
     
-    this.client.name = null;
+    this.client.firstName = null;
+    this.client.lastName = null;
     this.client.email = null;
     this.client.password = null;
     this.client.role = null;

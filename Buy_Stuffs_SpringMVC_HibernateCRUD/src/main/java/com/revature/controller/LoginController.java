@@ -38,7 +38,7 @@ public class LoginController {
 	
 	@GetMapping("/home")
 	public String home(Model model, @ModelAttribute("loggedClient") Client client) {
-		if (client.getName() != null) {
+		if (client.getFirstName() != null) {
 			return clientService.viewHome(client);
 		}
 		return "login";
@@ -64,7 +64,7 @@ public class LoginController {
 	
 	@GetMapping("/logout")
 	public String logout(Model model, @ModelAttribute("loggedClient") Client client, SessionStatus session) {
-		if (client.getName() != null) {
+		if (client.getFirstName() != null) {
 			session.setComplete();
 		}
 		return "login";

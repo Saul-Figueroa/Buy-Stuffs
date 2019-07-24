@@ -18,7 +18,7 @@ public class ClientDAOImpl implements ClientDAO {
 	SessionFactory sessionFactory;
 
 	@Override
-	public void addClient(Client client) {
+	public void saveClient(Client client) {
 		sessionFactory.getCurrentSession().saveOrUpdate(client);
 		System.out.println("Client added succesfully");
 		
@@ -45,6 +45,18 @@ public class ClientDAOImpl implements ClientDAO {
 		System.out.println("Book in DAO "+clientId);
 		Client client = currentSession.get(Client.class, clientId);
 		return client;	
+	}
+
+	@Override
+	public Client findClientByEmail(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Client findClientByResetToken(String resetToken) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 //	@Override

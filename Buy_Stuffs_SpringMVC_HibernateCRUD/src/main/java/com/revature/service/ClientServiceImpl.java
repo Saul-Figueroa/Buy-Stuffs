@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.revature.dao.ClientDAOImpl;
 import com.revature.entity.Client;
+import com.revature.entity.User;
 
 @Service("clientService")
 public class ClientServiceImpl implements ClientService {
@@ -19,13 +20,13 @@ public class ClientServiceImpl implements ClientService {
 	@Override
 	@Transactional
 	public void addClient(Client client) {
-		clientDAO.addClient(client);
+		clientDAO.saveClient(client);
 	}
 
 	@Override
 	@Transactional
 	public List<Client> getAllClients() {
-		List<Client> clients = clientDAO.getAllClients();		
+		List<Client> clients = clientDAO.getAllClients();
 		return clients;
 	}
 
@@ -45,7 +46,7 @@ public class ClientServiceImpl implements ClientService {
 		}
 		return "customerHome";
 	}
-	
+
 	@Override
 	@Transactional
 	public Client login(String email, String password) {
@@ -62,12 +63,22 @@ public class ClientServiceImpl implements ClientService {
 		return null;
 	}
 
+	@Override
+	public User findUserByEmail(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public User findUserByResetToken(String resetToken) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 //	@Override
 //	@Transactional
 //	public void deleteClientById(int clientId) {
 //		clientDAO.deleteClientById(clientId);
 //	}
-	
-	
 
 }

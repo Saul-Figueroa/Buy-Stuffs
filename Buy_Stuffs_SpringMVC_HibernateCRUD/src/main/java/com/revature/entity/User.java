@@ -24,22 +24,22 @@ public class User {
 	@Column(name = "password")
 	private String password;
 	
-	@Column(name = "firstname")
+	@Column(name = "firstName")
 	private String firstName;
 
-	@Column(name = "lastname")
+	@Column(name = "lastName")
 	private String lastName;
 	
-	@Column(name = "createdon")
+	@Column(name = "createdOn")
 	private Date createdOn;
 	
-	@Column(name = "lastlogin")
+	@Column(name = "lastLogin")
 	private Date lastLogin;
 	
-	@Column(name = "resettoken")
+	@Column(name = "resetToken")
 	private String resetToken;
 	
-//	columnDefinition forces the role to be either MANAGER or CUSTOMER
+//	columnDefinition forces the role to be either MANAGER, CUSTOMER, or VENDOR
 	@Column(name="role", columnDefinition = "VARCHAR2(50) CHECK (role IN ('MANAGER', 'CUSTOMER', 'VENDOR'))")
 	private String role;
 	
