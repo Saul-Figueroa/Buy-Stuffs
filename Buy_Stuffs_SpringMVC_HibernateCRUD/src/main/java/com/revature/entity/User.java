@@ -18,7 +18,7 @@ public class User {
 	@Column(name = "id")
 	private long id;
 	
-	@Column(name = "email")
+	@Column(name = "email", unique = true)
 	private String email;
 	
 	@Column(name = "password")
@@ -55,6 +55,10 @@ public class User {
 	
 	public User(String email) {
 		this.email = email;
+	}
+	
+	public User(int id) {
+		this.id = id;
 	}
 	
 	

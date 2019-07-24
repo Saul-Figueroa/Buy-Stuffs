@@ -3,7 +3,6 @@ package com.revature.entity;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,19 +33,19 @@ public class Item {
 	
 	//Many to One FK for Vendor(the person who register the product), many items can have the same vendor
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "clientid")
-	private Client clientid;
+	@JoinColumn(name = "userid")
+	private User userid;
 	
 	public Item() {}
 	
-	public Item(int id, String name, String description, double price, int quantity, Client clientid) {
+	public Item(int id, String name, String description, double price, int quantity, User userid) {
 		
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.price = price;
 		this.quantity = quantity;
-		this.clientid = clientid;
+		this.userid = userid;
 	}
 
 	public Item(int id, String name, String description, double price) {
@@ -57,13 +56,13 @@ public class Item {
 		this.price = price;
 	}
 
-	public Item(String name, String description, double price,int quantity, Client clientid ) {
+	public Item(String name, String description, double price,int quantity, User userid ) {
 		
 		this.name = name;
 		this.description = description;
 		this.price = price;
 		this.quantity = quantity;
-		this.clientid = clientid;
+		this.userid = userid;
 		
 	}
 
@@ -106,22 +105,21 @@ public class Item {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	
-	
 
-	public Client getClientid() {
-		return clientid;
+
+	public User getUserid() {
+		return userid;
 	}
 
-	public void setClientid(Client clientid) {
-		this.clientid = clientid;
+	public void setUserid(User userid) {
+		this.userid = userid;
 	}
-
 
 	@Override
 	public String toString() {
 		return "Item [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + ", quantity="
-				+ quantity + ", clientid=" + clientid + "]";
+				+ quantity + ", userid=" + userid + "]";
 	}
+
 
 }
