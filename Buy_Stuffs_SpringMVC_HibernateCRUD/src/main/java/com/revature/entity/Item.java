@@ -10,6 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 @Entity
 @Table(name="ITEM")
 public class Item {
@@ -32,7 +35,8 @@ public class Item {
 	private int quantity;
 	
 	//Many to One FK for Vendor(the person who register the product), many items can have the same vendor
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name = "clientid")
 	private Client clientid;
 	

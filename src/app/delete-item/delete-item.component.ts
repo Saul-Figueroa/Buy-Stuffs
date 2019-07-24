@@ -34,7 +34,13 @@ export class DeleteItemComponent implements OnInit {
                               this.statusMessage = "Problem with service. Please try again later.";
                             }
             );
+
+            this.refresh();
   }
+
+  refresh(): void {
+    window.location.reload();
+}
   // 1. Create empty items array
   public items:Item[]=[];
 
