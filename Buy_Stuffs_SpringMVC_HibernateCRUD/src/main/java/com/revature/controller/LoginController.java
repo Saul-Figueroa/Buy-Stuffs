@@ -1,5 +1,11 @@
 package com.revature.controller;
 
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,11 +47,15 @@ public class LoginController {
 		if (client.getFirstName() != null) {
 			return clientService.viewHome(client);
 		}
+//		request.getRequestDispatcher("login").forward(request, response);
 		return "login";
 	}
 	
 	@GetMapping("/login")
-	public String login(Model model) {
+	public String login(Model model, @ModelAttribute("loggedClient") Client client) {
+		if (client.getFirstName() != null) {
+			return clientService.viewHome(client);
+		}
 		return "login";
 	}
 	
@@ -63,11 +73,13 @@ public class LoginController {
 	}
 	
 	@GetMapping("/logout")
-	public String logout(Model model, @ModelAttribute("loggedClient") Client client, SessionStatus session) {
+	public void logout(Model model, @ModelAttribute("loggedClient") Client client, SessionStatus session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if (client.getFirstName() != null) {
 			session.setComplete();
 		}
-		return "login";
+		response.sendRedirect("http://localhost:4200");
+//		request.getRequestDispatcher("http://localhost:4200").forward(request, response);
+//		return "logout";
 	}
 
 	public LoginController() {
