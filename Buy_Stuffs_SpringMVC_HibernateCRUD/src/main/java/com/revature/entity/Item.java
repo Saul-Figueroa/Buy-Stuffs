@@ -33,19 +33,19 @@ public class Item {
 	
 	//Many to One FK for Vendor(the person who register the product), many items can have the same vendor
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "userid")
-	private User userid;
+	@JoinColumn(name = "clientid")
+	private Client clientid;
 	
 	public Item() {}
 	
-	public Item(int id, String name, String description, double price, int quantity, User userid) {
+	public Item(int id, String name, String description, double price, int quantity, Client clientid) {
 		
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.price = price;
 		this.quantity = quantity;
-		this.userid = userid;
+		this.clientid = clientid;
 	}
 
 	public Item(int id, String name, String description, double price) {
@@ -56,13 +56,13 @@ public class Item {
 		this.price = price;
 	}
 
-	public Item(String name, String description, double price,int quantity, User userid ) {
+	public Item(String name, String description, double price,int quantity, Client clientid ) {
 		
 		this.name = name;
 		this.description = description;
 		this.price = price;
 		this.quantity = quantity;
-		this.userid = userid;
+		this.clientid = clientid;
 		
 	}
 
@@ -107,18 +107,18 @@ public class Item {
 	}
 
 
-	public User getUserid() {
-		return userid;
+	public Client getClientid() {
+		return clientid;
 	}
 
-	public void setUserid(User userid) {
-		this.userid = userid;
+	public void setClientid(Client clientid) {
+		this.clientid = clientid;
 	}
 
 	@Override
 	public String toString() {
 		return "Item [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + ", quantity="
-				+ quantity + ", userid=" + userid + "]";
+				+ quantity + ", clientid=" + clientid + "]";
 	}
 
 

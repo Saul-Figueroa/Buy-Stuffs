@@ -11,14 +11,14 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import com.revature.entity.User;
+import com.revature.entity.Client;
 
 public class JavaMailUtil {
 	
-public static boolean sendMail(User user, String url) throws MessagingException {
+public static boolean sendMail(Client client, String url) throws MessagingException {
 		
 		//Configuring the properties fo the mail, we can put a key and a value to this properties
-		System.out.println("Preparing to send mail to: "+user.getEmail());
+		System.out.println("Preparing to send mail to: "+client.getEmail());
 		
 		final String myAccountEmail = "buy.stuffs2019@gmail.com";
 		final String password = "/g4^7Uk?98";
@@ -41,7 +41,7 @@ public static boolean sendMail(User user, String url) throws MessagingException 
 		});
 		
 		//Message is part of the API
-		Message message = prepareMessage(session, myAccountEmail, user, url);
+		Message message = prepareMessage(session, myAccountEmail, client, url);
 		
 		//Transport is part of the API
 		Transport.send(message);
@@ -50,13 +50,13 @@ public static boolean sendMail(User user, String url) throws MessagingException 
 		
 	}
 
-	private static Message prepareMessage(Session session, String myAccountEmail, User user, String url) {
+	private static Message prepareMessage(Session session, String myAccountEmail, Client client, String url) {
 		
 		
 		try {
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(myAccountEmail));
-			message.setRecipient(Message.RecipientType.TO, new InternetAddress(user.getEmail()));
+			message.setRecipient(Message.RecipientType.TO, new InternetAddress(client.getEmail()));
 			message.setSubject("Password Reset Request");
 			message.setText("To reset your password, click the link below:\n"+url);
 			//to set up html instead we use setContent

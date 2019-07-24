@@ -1,45 +1,44 @@
 package com.revature.dao;
 
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.revature.entity.User;
+import com.revature.entity.Client;
 
 @Repository("userRepository")
-public class UserDAOImpl implements UserDAO{
+public class MailDAOImpl implements MailDAO{
 	
 	
 	@Autowired
 	SessionFactory sessionFactory;
 
 	@Override
-	public User findUserByEmail(String email) {
+	public Client findUserByEmail(String email) {
 		System.out.println("Starting find by mail");
 		Query query = sessionFactory.getCurrentSession().createQuery("from User where email= :email");
 		query.setParameter("email", email);
 		System.out.println("Entring here DAO");
-		User user = (User) query.getSingleResult();
-		return user;	
+		Client client = (Client) query.getSingleResult();
+		return client;	
 	}
 
 	@Override
-	public User findUserByResetToken(String resetToken) {
+	public Client findUserByResetToken(String resetToken) {
 		
 		System.out.println("Starting find by mail");
 		Query query = sessionFactory.getCurrentSession().createQuery("from User where resetToken= :resetToken");
 		query.setParameter("resetToken", resetToken);
 		System.out.println("Entring here DAO");
-		User user = (User) query.getSingleResult();
-		return user;	
+		Client client = (Client) query.getSingleResult();
+		return client;	
 	}
 
 	@Override
-	public void save(User user) {
+	public void save(Client client) {
 	
-		sessionFactory.getCurrentSession().saveOrUpdate(user);
+		sessionFactory.getCurrentSession().saveOrUpdate(client);
 		System.out.println("User added successfully");
 		
 	}

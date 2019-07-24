@@ -1,6 +1,5 @@
 package com.revature.controller;
 
-import java.util.Map;
 import java.util.UUID;
 
 import javax.mail.MessagingException;
@@ -16,16 +15,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.revature.entity.User;
+import com.revature.entity.Client;
 import com.revature.mail.JavaMailUtil;
-import com.revature.service.UserService;
+import com.revature.service.MailService;
 
 @Controller
 @RequestMapping("/user")
 public class MailController {
 	
 	@Autowired
-	private UserService userService;
+	private MailService mailService;
 	
 	//Display login page
 		@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -46,29 +45,29 @@ public class MailController {
 		
 		//Lookup user in the database by email
 		System.out.println(userEmail);
-		User user = userService.findUserByEmail(userEmail.toUpperCase());
-		System.out.println("User information "+user);
+		Client client = mailService.findUserByEmail(userEmail.toUpperCase());
+		System.out.println("User information "+client);
 		
-		if (user == null) {
+		if (client == null) {
 			modelAndView.addObject("errorMessage", "We didn't find an account for that email address" );
 		}
 		else {
 		// Generate random 36-character string token for reset password
-		user.setResetToken(UUID.randomUUID().toString());
-		System.out.println("This is the token "+user.getResetToken());
+		client.setResetToken(UUID.randomUUID().toString());
+		System.out.println("This is the token "+client.getResetToken());
 		
 		// Save token to database
-		userService.save(user);
+		mailService.save(client);
 		
-		System.out.println("User values "+user);
+		System.out.println("User values "+client);
 		
-		String appUrl = request.getScheme() + "://" + request.getServerName()+ ":8090/Buy_Stuffs/user/reset?token="+user.getResetToken();
+		String appUrl = request.getScheme() + "://" + request.getServerName()+ ":8090/Buy_Stuffs/user/reset?token="+client.getResetToken();
 		System.out.println("This is the URL "+appUrl);
 		
 		
 		//Call the send mail boolean method
-		if (JavaMailUtil.sendMail(user, appUrl)) {
-			modelAndView.addObject("successMessage","A password reset link has been sent to " + user.getEmail());
+		if (JavaMailUtil.sendMail(client, appUrl)) {
+			modelAndView.addObject("successMessage","A password reset link has been sent to " + client.getEmail());
 				}
 		
 		}
@@ -83,14 +82,14 @@ public class MailController {
 	@RequestMapping(value = "/reset", method = RequestMethod.GET)
 	public ModelAndView displayResetPasswordPage(ModelAndView modelAndView, @RequestParam("token") String token, HttpServletRequest request ) {
 		
-		User userToken = userService.findUserByResetToken(token);
-		System.out.println("Token information "+userToken);
+		Client clientToken = mailService.findUserByResetToken(token);
+		System.out.println("Token information "+clientToken);
 		
-		 request.getSession().setAttribute("userToken", userToken);
+		 request.getSession().setAttribute("userToken", clientToken);
 		 System.out.println("Requestinformation "+request.getSession().getAttribute("userToken"));
 		
 
-		if (!(userToken == null)) { // Token found in DB
+		if (!(clientToken == null)) { // Token found in DB
 			modelAndView.addObject("resetToken", token);
 			
 			
@@ -106,26 +105,26 @@ public class MailController {
 	// Process reset password form	
 		@RequestMapping(value = "/reset", method = RequestMethod.POST)
 		public ModelAndView setNewPassword(ModelAndView modelAndView, @RequestParam String password, RedirectAttributes redir, HttpServletRequest request) {
-			User tokenUser = (User) request.getSession().getAttribute("userToken");
-			System.out.println("Request parameter "+tokenUser);
-			System.out.println("Reset parameter "+tokenUser.getResetToken());
+			Client tokenClient = (Client) request.getSession().getAttribute("userToken");
+			System.out.println("Request parameter "+tokenClient);
+			System.out.println("Reset parameter "+tokenClient.getResetToken());
 			
 			// Find the user associated with the reset token
-			User user = userService.findUserByResetToken(tokenUser.getResetToken());
-			System.out.println("User information "+user);
+			Client client = mailService.findUserByResetToken(tokenClient.getResetToken());
+			System.out.println("User information "+client);
 
 			// This should always be non-null but we check just in case
-			if (!(user == null)) {
+			if (!(client == null)) {
 				
 				System.out.println("Changing the password");
 				// Set new password    
-	            user.setPassword(password);
+	            client.setPassword(password);
 	          
 				// Set the reset token to null so it cannot be used again
-				user.setResetToken(null);
+				client.setResetToken(null);
 
 				// Save user
-				userService.save(user);
+				mailService.save(client);
 
 				// In order to set a model attribute on a redirect, we must use
 				// RedirectAttributes

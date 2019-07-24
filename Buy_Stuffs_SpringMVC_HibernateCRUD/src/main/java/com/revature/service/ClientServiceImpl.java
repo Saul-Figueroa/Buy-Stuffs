@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.revature.dao.ClientDAOImpl;
 import com.revature.entity.Client;
-import com.revature.entity.User;
 
 @Service("clientService")
 public class ClientServiceImpl implements ClientService {
@@ -63,18 +62,7 @@ public class ClientServiceImpl implements ClientService {
 		return null;
 	}
 
-	@Override
-	public User findUserByEmail(String email) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public User findUserByResetToken(String resetToken) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 //	@Override
 //	@Transactional
 //	public void deleteClientById(int clientId) {

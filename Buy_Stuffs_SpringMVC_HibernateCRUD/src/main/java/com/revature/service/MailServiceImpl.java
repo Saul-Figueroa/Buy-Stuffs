@@ -5,32 +5,32 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.revature.dao.UserDAOImpl;
-import com.revature.entity.User;
+import com.revature.dao.MailDAOImpl;
+import com.revature.entity.Client;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class MailServiceImpl implements MailService{
 	
 	@Autowired
 	
-	private UserDAOImpl userDaoImpl;
+	private MailDAOImpl mailDaoImpl;
 
 	@Override
 	@Transactional
-	public User findUserByEmail(String email) {
-		return userDaoImpl.findUserByEmail(email);
+	public Client findUserByEmail(String email) {
+		return mailDaoImpl.findUserByEmail(email);
 	}
 
 	@Override
 	@Transactional
-	public User findUserByResetToken(String resetToken) {
-		return userDaoImpl.findUserByResetToken(resetToken);
+	public Client findUserByResetToken(String resetToken) {
+		return mailDaoImpl.findUserByResetToken(resetToken);
 	}
 
 	@Override
 	@Transactional
-	public void save(User user) {
-		userDaoImpl.save(user);
+	public void save(Client client) {
+		mailDaoImpl.save(client);
 		
 	}
 	
