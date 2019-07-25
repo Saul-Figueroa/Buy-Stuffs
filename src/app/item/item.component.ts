@@ -32,6 +32,7 @@ export class ItemComponent implements OnInit {
     this.refresh();
   }
 
+  //get items
   getItems():void{
     this._itemService.getItems().
     subscribe((itemData) => this.items = itemData,
@@ -39,6 +40,21 @@ export class ItemComponent implements OnInit {
                              this.statusMessage = "Problem with service. Please try again later!";
                             }
     );
+  }
+
+  //delete item
+  deleteItem(itemId):void{
+    this._itemService.deleteItem(itemId).
+    subscribe((response) => {console.log(response);
+                            this.getItems();
+                            },
+                            (error) => {
+                              console.log(error);
+                              this.statusMessage = "Problem with service. Please try again later.";
+                            }
+            );
+
+            this.refresh();
   }
 
   refresh(): void {

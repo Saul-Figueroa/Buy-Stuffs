@@ -1,13 +1,10 @@
  <!--     NAVBAR     -->
  <!--     NAVBAR     -->
- <nav class="navbar navbar-expand-sm navbar-light bg-light  navbar-fixed-top" >
-  <a class="navbar-brand" href="#">Buy Stuffs</a>
+ <nav class="navbar navbar-expand-sm navbar-light bg-light navbar-fixed-top" >
+  <a class="navbar-brand" href="Home"> <img src="https://buy-stuffs.s3.us-east-2.amazonaws.com/stuffs_disscount.jpg" 
+    style="position:absolute;left:150;top:10px; height:50px"
+     alt="BuyStuffs logo"></a>
 
-  <a class="navbar-brand" href="https://buy-stuffs.s3.us-east-2.amazonaws.com/buystuffs_online.jpg">
-      <img src="https://buy-stuffs.s3.us-east-2.amazonaws.com/stuffs_disscount.jpg" 
-      style="position:absolute;left:150;top:30px; height:50px"
-       alt="BuyStuffs logo"></a>
-       
  
   <div class="collapse navbar-collapse" id="navbarSupportedContent"> <!-- collapse will be not allow overlapping-->
           <ul class="navbar-nav mr-auto">
@@ -17,17 +14,11 @@
 
                       
                       <li routerLinkActive="active" class="active p-3">
-                          <a href="http://localhost:8090/Buy_Stuffs/LoginController/login" style="padding-left:100px">Log In</a> </li>
+                          <a href="login" style="padding-left:100px">Log In</a> </li>
                       <li routerLinkActive="active" class="active p-3">
                           <a href="http://localhost:8090/Buy_Stuffs/LoginController/viewHome" style="padding-left:100px">Home</a> </li>
                       <li routerLinkActive="active" class="active p-3">
                           <a routerLink="addItem" style="padding-left:100px">Add Item</a>
-                      </li>
-                      <li routerLinkActive="active" class="active p-3">
-                          <a routerLink="showList" style="padding-left:100px">List of items</a>
-                      </li>
-                      <li routerLinkActive="active" class="active p-3">
-                          <a routerLink="deleteItem" style="padding-left:100px">Delete Item</a>
                       </li>
                       <li routerLinkActive="active" class="active p-3">
                         <a routerLink="showClientList" style="padding-left:100px">Clients</a>

@@ -14,6 +14,7 @@ import { ClientComponent } from './client/client.component';
 import { HomeManagerComponent } from './home-manager/home-manager.component';
 import { HomeVendorComponent } from './home-vendor/home-vendor.component';
 import { LoginComponent } from './login/login.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 
 
@@ -34,7 +35,8 @@ import { LoginComponent } from './login/login.component';
     AppRoutingModule,
     // import HttpClientModule after BrowserModule.
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    AngularFontAwesomeModule
   ],
   providers: [ItemServiceService],
   bootstrap: [AppComponent]

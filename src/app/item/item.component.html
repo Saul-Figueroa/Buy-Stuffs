@@ -61,15 +61,16 @@
                 <td>{{item.price}}</td>
                
              <div>
-                <button (click) = "getBook(book.id)" class="btn btn-success">Edit</button>
+                <button (click) = "updateItem(item.id)" class="btn btn-success">Edit</button>
                 &nbsp;&nbsp;
-                <button (click) = "deleteBook(book.id)" class="btn btn-danger" >Delete</button>  
-             </div>   
-
-            
-    
+                <button (click) = "deleteItem(item.id)" class="btn btn-danger" >Delete</button>  
+             </div>       
     
             </tr>
+
+            <tr *ngIf = "items && items.length == 0">
+                <td colspan = '3'>No records found!</td> 
+              </tr>
 
             
     
