@@ -41,7 +41,7 @@ export class ClientServiceService {
     document.getElementById("load").innerHTML =text + "<div class=row>"+
     "<div class=\"col-sm-4\"> <!-- Sets column os span 4-->"+
      "<div class=\"card my-10\" style=\"width:400px\">"+
-       "<img class=\"card-img-top\" src=\"assets/user.png\" alt=\"Card image\" style=\"width:100%\">"+
+       "<img class=\"card-img-top\" src=\"https://buy-stuffs.s3.us-east-2.amazonaws.com/pokemon.gif\" alt=\"Card image\" style=\"width:100%\">"+
        "<div class=\"card-body\">"+
          "<h4 class=\"card-title\">User</h4>"+
          "<p class=\"card-text\">user@123.com</p>"+
