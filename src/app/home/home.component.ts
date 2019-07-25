@@ -12,7 +12,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     console.log("OnInit method reached");
-    this.loginStatus();
+    // this.loginStatus();
+    this.loadHome();
   }
 
   loginStatus() {
@@ -20,6 +21,10 @@ export class HomeComponent implements OnInit {
                                                                         if (response != null) {
                                                                         window.location.assign(response.toString())}
                                                                         });
+  }
+
+  loadHome() {
+    this._clientService.loadHome();
   }
 
 }

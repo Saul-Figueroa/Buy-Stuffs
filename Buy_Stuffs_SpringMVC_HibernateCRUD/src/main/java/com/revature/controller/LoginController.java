@@ -61,6 +61,7 @@ public class LoginController {
 		if (client.getFirstName() != null) {
 			clientService.viewHome(client, request, response);
 		}
+//		response.sendRedirect("http://localhost:4200/login");
 		return "login";
 	}
 
@@ -117,7 +118,7 @@ public class LoginController {
 				return "http://localhost:4200/homeCustomer";
 			}
 		}
-		return "http://localhost:8090/Buy_Stuffs/LoginController/login";
+		return "http://localhost:4200/login";
 	}
 
 	public LoginController() {

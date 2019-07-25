@@ -10,6 +10,7 @@ export class LoginComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    window.top.location.href = "http://localhost:8090/Buy_Stuffs/LoginController/login";
   }
 
 }
