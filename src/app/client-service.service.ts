@@ -23,7 +23,7 @@ export class ClientServiceService {
 
    // 3. Get an client
   getClientById(clientId: number): Observable<any>{
-    return this._httpService.get("http://localhost:8090/Buy_Stuffs/client/clients/" + clientId)
+    return this._httpService.get("http://localhost:8090/Buy_Stuffs/client/clients/" + clientId);
   }
 
   // //4. Delete a Client
@@ -31,8 +31,9 @@ export class ClientServiceService {
   //   return this._httpService.delete("http://localhost:8090/Buy_Stuffs/client/clients/" + clientId);
   // }
 
-  viewHome() { //asynchronous
-    return this._httpService.get("http://localhost:8090/Buy_Stuffs/LoginController/home");
+  loginStatus(home: String) { //asynchronous "http://localhost:8090/Buy_Stuffs/LoginController/loginStatus?home=" + home
+    console.log("Inside ClientServiceService with home value of " + home);
+    return this._httpService.get("http://localhost:8090/Buy_Stuffs/LoginController/loginStatus?home=" + home);
   }
 
 

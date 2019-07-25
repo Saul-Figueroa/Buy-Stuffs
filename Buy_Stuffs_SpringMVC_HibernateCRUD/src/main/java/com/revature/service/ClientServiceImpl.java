@@ -41,14 +41,17 @@ public class ClientServiceImpl implements ClientService {
 
 	@Override
 	public void viewHome(Client client, HttpServletRequest request, HttpServletResponse response) throws IOException {
+		System.out.println("Client role is: " + client.getRole());
 		if (client.getRole().equals("MANAGER")) {
 			response.sendRedirect("http://localhost:4200/homeManager");
+			System.out.println("Client role is: " + client.getRole());
 //			return "managerHome";
 		} else if (client.getRole().equals("VENDOR")) {
 			response.sendRedirect("http://localhost:4200/homeVendor");
 //			return "vendorHome";
+		} else {
+			response.sendRedirect("http://localhost:4200/homeCustomer");
 		}
-		response.sendRedirect("http://localhost:4200/homeCustomer");
 //		return "customerHome";
 	}
 
