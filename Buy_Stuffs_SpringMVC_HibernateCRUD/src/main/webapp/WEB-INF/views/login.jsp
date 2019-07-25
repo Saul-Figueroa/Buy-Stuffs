@@ -140,7 +140,7 @@ margin-left: 4px;
 					Don't have an account?<a href="showClientList">Sign Up</a>
 				</div>
 				<div class="d-flex justify-content-center">
-					<a href="forgotPassword">Forgot your password?</a>
+					<a href="../user/forgot">Forgot your password?</a>
 				</div>
 			</div>
 		</div>

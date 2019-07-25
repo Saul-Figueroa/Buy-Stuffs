@@ -42,14 +42,16 @@ public class MailController {
 	//Process the submission from forgotPassword page
 	@RequestMapping(value = "/forgot", method = RequestMethod.POST)
 	public ModelAndView processForgotPasswordForm(ModelAndView modelAndView, @RequestParam("email") String userEmail, HttpServletRequest request ) throws MessagingException {
-		
 		//Lookup user in the database by email
-		System.out.println(userEmail);
-		Client client = mailService.findUserByEmail(userEmail.toUpperCase());
-		System.out.println("User information "+client);
+				System.out.println(userEmail);
+				Client client = mailService.findUserByEmail(userEmail.toUpperCase());
+				System.out.println("User information "+client);
+				
 		
 		if (client == null) {
 			modelAndView.addObject("errorMessage", "We didn't find an account for that email address" );
+			modelAndView.setViewName("errorMessage");
+			return modelAndView;
 		}
 		else {
 		// Generate random 36-character string token for reset password
@@ -68,6 +70,8 @@ public class MailController {
 		//Call the send mail boolean method
 		if (JavaMailUtil.sendMail(client, appUrl)) {
 			modelAndView.addObject("successMessage","A password reset link has been sent to " + client.getEmail());
+			modelAndView.setViewName("successMessage");
+			return modelAndView;
 				}
 		
 		}
@@ -131,7 +135,7 @@ public class MailController {
 				// RedirectAttributes
 				redir.addFlashAttribute("successMessage", "You have successfully reset your password.  You may now login.");
 
-				modelAndView.setViewName("redirect:login");
+				modelAndView.setViewName("redirect:http://localhost:4200/login");
 				return modelAndView;
 				
 			} else {
