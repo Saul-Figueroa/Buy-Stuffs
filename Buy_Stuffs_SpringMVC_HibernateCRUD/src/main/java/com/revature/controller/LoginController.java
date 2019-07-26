@@ -7,23 +7,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.revature.entity.Client;
 import com.revature.service.ClientService;
 
 @CrossOrigin(origins = "http://localhost:4200")
-@Controller
+@RestController
 @RequestMapping("/LoginController") // Instead of "/LoginController", but they'll go to Login if attribute is not
 									// set
 @SessionAttributes("loggedClient")
@@ -66,10 +65,11 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "logon", method = RequestMethod.POST)
-	public String logon(@RequestParam("email") String email, @RequestParam("password") String password, Model model,
+	public Client logon(@RequestBody Client formClient, Model model,
 			@ModelAttribute("loggedClient") Client client, HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
-		client = clientService.login(email, password);
+		System.out.println("Received client from form: " + formClient);
+		client = clientService.login(formClient.getEmail(), formClient.getPassword());
 		if (client != null) {
 			request.getSession().setAttribute("loggedClient", client);
 			model.addAttribute("loggedClient", client);
@@ -78,10 +78,11 @@ public class LoginController {
 		} else {
 //			return new ModelAndView("login", "result", "Unsuccessful login");
 			System.out.println("No logged Client in logon method");
-			return "login";
+			return null;
 		}
 //		return new ModelAndView(this.home(model, client), "loggedClient", client);
-		return this.home(model, client, request, response);
+		System.out.println("About to return client");
+		return client;
 //		"success", "result", "Welcome " + username + "!"
 	}
 

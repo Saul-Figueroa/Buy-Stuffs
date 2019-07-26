@@ -12,7 +12,7 @@ import { LoginComponent } from './login/login.component';
 
 
 const routes: Routes = [
-  {path: 'homeCustomer', component: HomeComponent},
+  {path: 'home', component: HomeComponent},
   {path: 'deleteItem', component: DeleteItemComponent},
   {path: 'addItem', component: ItemComponent},
   {path: 'showList', component: ItemListComponent},
