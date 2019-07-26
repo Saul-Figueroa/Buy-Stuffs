@@ -49,7 +49,7 @@ public class MailController {
 				
 		
 		if (client == null) {
-			modelAndView.addObject("errorMessage", "We didn't find an account for that email address" );
+			modelAndView.addObject("errorMessage", "We 	 find an account for that email address" );
 			modelAndView.setViewName("errorMessage");
 			return modelAndView;
 		}
