@@ -20,20 +20,10 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this._clientService.getClients();
-    // viewProfile();
     console.log("Home OnInit method reached");
-    // this.loginStatus();
-    console.log("loadHome role: "+this._contextService.retrieveTokenRole())
+    console.log("loadHome role: "+this._contextService.retrieveTokenRole());
     this.loadHome(this._contextService.retrieveTokenRole());
   }
-
-  // loginStatus() {
-  //   this._clientService.loginStatus("CUSTOMER").subscribe((response) => {console.log(response);
-  //                                                                       if (response != null) {
-  //                                                                       window.location.assign(response.toString())}
-  //                                                                       });
-  // // }
 
   loadHome(role:String) {
     let name:string = this._contextService.retrieveTokenFullName();

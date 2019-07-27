@@ -97,31 +97,6 @@ public class LoginController {
 //		return "logout";
 	}
 
-	@GetMapping("/loginStatus")
-	public String loginStatus(Model model, @ModelAttribute("loggedClient") Client client, HttpServletRequest request,
-			HttpServletResponse response) throws IOException {
-		System.out.println("loginStatus method");
-		if (client.getFirstName() != null && client.getRole().equals(request.getParameter("home"))) {
-			System.out.println("Matching logged client found");
-			return null;
-		}
-		System.out.println("Matching logged client not found");
-		System.out.println("ModelAttribute Client role is: " + client.getRole());
-		System.out.println("SessionAttribute Client role is: " + (((Client)(request.getSession().getAttribute("loggedClient"))).getRole()));
-		if (client.getRole() != null) {
-			if (client.getRole().equals("MANAGER")) {
-				return "http://localhost:4200/homeManager";
-//			return "managerHome";
-			} else if (client.getRole().equals("VENDOR")) {
-				return "http://localhost:4200/homeVendor";
-//			return "vendorHome";
-			} else {
-				return "http://localhost:4200/homeCustomer";
-			}
-		}
-		return "http://localhost:4200/login";
-	}
-
 	public LoginController() {
 		// TODO Auto-generated constructor stub
 	}

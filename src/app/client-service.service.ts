@@ -31,37 +31,15 @@ export class ClientServiceService {
   //   return this._httpService.delete("http://localhost:8090/Buy_Stuffs/client/clients/" + clientId);
   // }
 
-  loginStatus(home: string) { //asynchronous "http://localhost:8090/Buy_Stuffs/LoginController/loginStatus?home=" + home
-    console.log("Inside ClientServiceService with home value of " + home);
-    return this._httpService.get("http://localhost:8090/Buy_Stuffs/LoginController/loginStatus?home=" + home);
-  }
-
   loginAuthentication(client:Client): Observable<any>{
     let body = JSON.parse(JSON.stringify(client));
     console.log(body);
     return this._httpService.post("http://localhost:8090/Buy_Stuffs/LoginController/logon", body);
-
-
-    // let xmlhttp = new XMLHttpRequest();
-    // let body = JSON.parse(JSON.stringify(client);
-    // xmlhttp.open("POST", "http://localhost:8090/Buy_Stuffs/LoginController/logon", body);
-    // xmlhttp.onreadystatechange=function() {
-    //   if(xmlhttp.readyState == 4 && xmlhttp.responseText) {
-    //     client = JSON.parse(xmlhttp.responseText);
-    //     console.log(xmlhttp.responseText);
-    //   }
-    // }
-    // xmlhttp.send(FD);
-    // if (client != null) {
-    //   return client;
-    // } else {
-    //   return null;
-    // }
   }
 
   loadHomeCustomer(name:string, email:string) {
     var text = "";
-    document.getElementById("load").innerHTML =text + "<div class=row>"+
+    document.getElementById("load").innerHTML = text + "<div class=row>"+
     "<div class=\"col-sm-4\"> <!-- Sets column os span 4-->"+
      "<div class=\"card my-10\" style=\"width:400px\">"+
        "<img class=\"card-img-top\" src=\"https://buy-stuffs.s3.us-east-2.amazonaws.com/pokemon.gif\" alt=\"Card image\" style=\"width:100%\">"+
@@ -80,7 +58,7 @@ export class ClientServiceService {
 
   loadHomeVendor(name:string, email:string) {
     var text = "";
-    document.getElementById("load").innerHTML =text + "<div class=row>"+
+    document.getElementById("load").innerHTML = text + "<div class=row>"+
     "<div class=\"col-sm-4\"> <!-- Sets column os span 4-->"+
      "<div class=\"card my-10\" style=\"width:400px\">"+
        "<img class=\"card-img-top\" src=\"https://buy-stuffs.s3.us-east-2.amazonaws.com/vendor.png\" alt=\"Card image\" style=\"width:100%\">"+
@@ -99,7 +77,7 @@ export class ClientServiceService {
 
   loadHomeManager(name:string, email:string) {
     var text = "";
-    document.getElementById("load").innerHTML =text + "<div class=row>"+
+    document.getElementById("load").innerHTML = text + "<div class=row>"+
     "<div class=\"col-sm-4\"> <!-- Sets column os span 4-->"+
      "<div class=\"card my-10\" style=\"width:400px\">"+
        "<img class=\"card-img-top\" src=\"https://buy-stuffs.s3.us-east-2.amazonaws.com/manager.png\" alt=\"Card image\" style=\"width:100%\">"+

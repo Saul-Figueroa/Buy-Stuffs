@@ -13,9 +13,8 @@
            alt="BuyStuffs logo"></a>
       
        
-        <div class="collapse navbar-collapse" id="navbarSupportedContent"> <!-- collapse will be not allow overlapping-->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                       <!-- It will expand the items mr= margin-right-->
                 </ul>
                       <ul class="nav nav-tabs">
       
@@ -25,7 +24,7 @@
                             <li routerLinkActive="active" class="active p-3">
                                 <a href="home" style="padding-left:100px; color: gray">Home</a> </li>
                             <li routerLinkActive="active" class="active p-3">
-                                <a routerLink="addItem" style="padding-left:100px; color: gray">Add Item</a>
+                                <a id="addItem" routerLink="addItem" style="padding-left:100px; color: gray">Add Item</a>
                             </li>
                             <li routerLinkActive="active" class="active p-3">
                               <a routerLink="showClientList" style="padding-left:100px; color: gray">Clients</a>
@@ -44,11 +43,13 @@
         </div>
       </nav>
 
-      <!-- <img src="https://buy-stuffs.s3.us-east-2.amazonaws.com/online-shop-1-01-.jpg" alt="Online Shopping" width="1100" height="500"> -->
              
       
    
 
       <router-outlet></router-outlet>
+
+            <!-- <img src="https://buy-stuffs.s3.us-east-2.amazonaws.com/online-shop-1-01-.jpg" alt="Online Shopping" width="1100" height="500"> -->
+
         
       
