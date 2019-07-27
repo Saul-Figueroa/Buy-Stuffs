@@ -25,8 +25,8 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log("login Init role: "+this._contextService.retrieve()); 
-    if (this._contextService.retrieve() != null) {
+    console.log("login Init role: "+this._contextService.retrieveTokenRole()); 
+    if (this._contextService.retrieveTokenRole() != null) {
       this.router.navigateByUrl('home');
     }
   }
@@ -50,7 +50,14 @@ export class LoginComponent implements OnInit {
       console.log("Set Client");
       console.log(this.loggedClient);
       this.router.navigateByUrl('home')
+    } else {
+      this.reset();
     }
+  }
+
+  private reset(){
+    this.clientToLog.email = null;
+    this.clientToLog.password = null;
   }
 
 }

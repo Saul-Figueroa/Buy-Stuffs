@@ -24,8 +24,8 @@ export class HomeComponent implements OnInit {
     // viewProfile();
     console.log("Home OnInit method reached");
     // this.loginStatus();
-    console.log("loadHome role: "+this._contextService.retrieve())
-    this.loadHome(this._contextService.retrieve());
+    console.log("loadHome role: "+this._contextService.retrieveTokenRole())
+    this.loadHome(this._contextService.retrieveTokenRole());
   }
 
   // loginStatus() {
@@ -36,12 +36,14 @@ export class HomeComponent implements OnInit {
   // // }
 
   loadHome(role:String) {
+    let name:string = this._contextService.retrieveTokenFullName();
+    let email:string = this._contextService.retrieveTokenEmail();
     if (role == "MANAGER") {
-      this._clientService.loadHomeManager();
+      this._clientService.loadHomeManager(name, email);
     } else if (role == "VENDOR") {
-      this._clientService.loadHomeVendor();
+      this._clientService.loadHomeVendor(name, email);
     } else if (role == "CUSTOMER") {
-      this._clientService.loadHomeCustomer();
+      this._clientService.loadHomeCustomer(name, email);
     } else {
       this.router.navigateByUrl('login');
     }

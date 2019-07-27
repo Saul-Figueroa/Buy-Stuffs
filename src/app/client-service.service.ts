@@ -59,15 +59,15 @@ export class ClientServiceService {
     // }
   }
 
-  loadHomeCustomer() {
+  loadHomeCustomer(name:string, email:string) {
     var text = "";
     document.getElementById("load").innerHTML =text + "<div class=row>"+
     "<div class=\"col-sm-4\"> <!-- Sets column os span 4-->"+
      "<div class=\"card my-10\" style=\"width:400px\">"+
        "<img class=\"card-img-top\" src=\"https://buy-stuffs.s3.us-east-2.amazonaws.com/pokemon.gif\" alt=\"Card image\" style=\"width:100%\">"+
        "<div class=\"card-body\">"+
-         "<h4 class=\"card-title\">User</h4>"+
-         "<p class=\"card-text\">user@123.com</p>"+
+         "<h4 class=\"card-title\">"+ name +"</h4>"+
+         "<p class=\"card-text\">"+ email +"</p>"+
        "</div>"+
     "</div>"+
     "</div>"+
@@ -78,15 +78,15 @@ export class ClientServiceService {
     "</div>";
   }
 
-  loadHomeVendor() {
+  loadHomeVendor(name:string, email:string) {
     var text = "";
     document.getElementById("load").innerHTML =text + "<div class=row>"+
     "<div class=\"col-sm-4\"> <!-- Sets column os span 4-->"+
      "<div class=\"card my-10\" style=\"width:400px\">"+
        "<img class=\"card-img-top\" src=\"https://buy-stuffs.s3.us-east-2.amazonaws.com/vendor.png\" alt=\"Card image\" style=\"width:100%\">"+
        "<div class=\"card-body\">"+
-         "<h4 class=\"card-title\">Vendor</h4>"+
-         "<p class=\"card-text\">vendor@123.com</p>"+
+         "<h4 class=\"card-title\">"+ name +"</h4>"+
+         "<p class=\"card-text\">"+ email +"</p>"+
        "</div>"+
     "</div>"+
     "</div>"+
@@ -97,15 +97,15 @@ export class ClientServiceService {
     "</div>";
   }
 
-  loadHomeManager() {
+  loadHomeManager(name:string, email:string) {
     var text = "";
     document.getElementById("load").innerHTML =text + "<div class=row>"+
     "<div class=\"col-sm-4\"> <!-- Sets column os span 4-->"+
      "<div class=\"card my-10\" style=\"width:400px\">"+
        "<img class=\"card-img-top\" src=\"https://buy-stuffs.s3.us-east-2.amazonaws.com/manager.png\" alt=\"Card image\" style=\"width:100%\">"+
        "<div class=\"card-body\">"+
-         "<h4 class=\"card-title\">Manager</h4>"+
-         "<p class=\"card-text\">Manager@123.com</p>"+
+         "<h4 class=\"card-title\">"+ name +"</h4>"+
+         "<p class=\"card-text\">"+ email +"</p>"+
        "</div>"+
     "</div>"+
     "</div>"+
