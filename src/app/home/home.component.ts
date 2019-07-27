@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ClientServiceService } from '../client-service.service';
 import { ContextService } from '../context.service';
 import { Client } from '../client/client';
+import { AppComponent } from '../app.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +14,9 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private _clientService:ClientServiceService,
+    public _appComponent:AppComponent,
     private _contextService:ContextService,
+    private router:Router
   ) { }
 
   ngOnInit() {
@@ -20,7 +24,8 @@ export class HomeComponent implements OnInit {
     // viewProfile();
     console.log("Home OnInit method reached");
     // this.loginStatus();
-    this.loadHome(this._contextService.getClient().role);
+    console.log("loadHome role: "+this._contextService.retrieve())
+    this.loadHome(this._contextService.retrieve());
   }
 
   // loginStatus() {
@@ -35,8 +40,10 @@ export class HomeComponent implements OnInit {
       this._clientService.loadHomeManager();
     } else if (role == "VENDOR") {
       this._clientService.loadHomeVendor();
-    } else {
+    } else if (role == "CUSTOMER") {
       this._clientService.loadHomeCustomer();
+    } else {
+      this.router.navigateByUrl('login');
     }
   }
 

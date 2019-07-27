@@ -11,6 +11,21 @@ export class ContextService {
 
     constructor(){}
 
+    private tokenKey:string = "notNull";
+
+    store(client:Client) {
+        localStorage.setItem(this.tokenKey, client.role);
+    }
+
+    retrieve() {
+        let storedToken:string = localStorage.getItem(this.tokenKey);
+        return storedToken;
+    }
+
+    clear() {
+        localStorage.removeItem(this.tokenKey);
+    }
+
     private client = new Client();
 
     setClient(client: Client) {

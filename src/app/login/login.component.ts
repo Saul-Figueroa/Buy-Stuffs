@@ -3,6 +3,7 @@ import { Client } from '../client/client';
 import { ClientServiceService } from '../client-service.service';
 import { Router } from '@angular/router';
 import { ContextService } from '../context.service';
+import { AppComponent } from '../app.component'
 
 @Component({
   selector: 'app-login',
@@ -14,16 +15,18 @@ export class LoginComponent implements OnInit {
   private password;
   clientToLog = new Client();
   loggedClient = new Client();
-  statusMessage:String;
+  statusMessage:string;
 
   constructor(
     private router:Router,
     private _clientService:ClientServiceService,
+    public _appComponent:AppComponent,
     private _contextService:ContextService
   ) { }
 
   ngOnInit() {
-    if (this._contextService.getClient().firstName != null) {
+    console.log("login Init role: "+this._contextService.retrieve()); 
+    if (this._contextService.retrieve() != null) {
       this.router.navigateByUrl('home');
     }
   }
@@ -41,10 +44,9 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  loginAuthorization(loggedClient: Client){
-    if (this.loggedClient != null) {
-      const client = this.loggedClient;
-      this._contextService.setClient(client);
+  loginAuthorization(client: Client){
+    if (client != null) {
+      this._contextService.store(client);
       console.log("Set Client");
       console.log(this.loggedClient);
       this.router.navigateByUrl('home')
