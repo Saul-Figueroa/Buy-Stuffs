@@ -18,7 +18,7 @@ export class ClientComponent implements OnInit {
   }
 
   public clients:Client[]=[];
-  statusMessage:String;
+  statusMessage:string;
   client = new Client();
 
   getClients():void{

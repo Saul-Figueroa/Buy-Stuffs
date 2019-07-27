@@ -15,6 +15,7 @@ import { HomeManagerComponent } from './home-manager/home-manager.component';
 import { HomeVendorComponent } from './home-vendor/home-vendor.component';
 import { LoginComponent } from './login/login.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { ContextService } from './context.service'
 
 
 
