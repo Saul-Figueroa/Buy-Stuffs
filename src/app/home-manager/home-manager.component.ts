@@ -11,12 +11,12 @@ export class HomeManagerComponent implements OnInit {
   constructor(private _clientService:ClientServiceService) { }
 
   ngOnInit() {
-    console.log("OnInit method reached");
-    this.loginStatus();
+    // console.log("OnInit method reached");
+    // this.loginStatus();
   }
 
-  loginStatus() {
-    this._clientService.loginStatus("MANAGER");
-  }
+  // loginStatus() {
+  //   this._clientService.loginStatus("MANAGER");
+  // }
 
 }

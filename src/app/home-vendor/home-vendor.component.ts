@@ -11,12 +11,12 @@ export class HomeVendorComponent implements OnInit {
   constructor(private _clientService:ClientServiceService) { }
 
   ngOnInit() {
-    console.log("OnInit method reached");
-    this.loginStatus();
+    // console.log("OnInit method reached");
+    // this.loginStatus();
   }
 
-  loginStatus() {
-    this._clientService.loginStatus("VENDOR");
-  }
+  // loginStatus() {
+  //   this._clientService.loginStatus("VENDOR");
+  // }
 
 }
